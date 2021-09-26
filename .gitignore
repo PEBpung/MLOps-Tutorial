@@ -1,0 +1,5 @@
+wandb/
+raw/
+processed/
+MNIST/
+*.h5
