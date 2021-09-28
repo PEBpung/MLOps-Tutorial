@@ -3,3 +3,4 @@ raw/
 processed/
 MNIST/
 *.h5
+__pycache__/
