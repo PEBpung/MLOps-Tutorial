@@ -1,0 +1,26 @@
+program: train.py
+method: random
+metric:
+  name: loss
+  goal: minimize
+parameters:
+  optimizer:
+    values: ['adam', 'sgd']
+  dropout:
+    values: [0.3, 0.4, 0.5]
+  epochs:
+    values: [1, 2]
+  learning_rate:
+    distribution: uniform
+    min: 0
+    max: 0.1
+  batch_size:
+    distribution: q_log_uniform
+    q: 1
+    min: math.log(32)
+    max: math.log(256)
+early_terminate:
+  type: hyperband
+  s: 2
+  eta: 3
+  max_iter: 27
