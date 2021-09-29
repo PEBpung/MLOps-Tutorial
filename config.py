@@ -29,7 +29,7 @@ sweep_config = {
             'values': [0.3, 0.4, 0.5]
             },
         'epochs': {
-            'value': [1, 2]
+            'values': [5, 6]
             },
         'learning_rate': {
             'distribution': 'uniform',
