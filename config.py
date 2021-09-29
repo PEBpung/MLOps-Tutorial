@@ -4,7 +4,7 @@ from torchvision import transforms
 
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
-config_defaults = {
+hyperparameter_defaults  = {
         'epochs': 2,
         'batch_size': 128,
         'weight_decay': 0.0005,
@@ -32,7 +32,7 @@ sweep_config = {
             'values': [0.3, 0.4, 0.5]
             },
         'epochs': {
-            'value': 1
+            'value': [1, 2]
             },
         'learning_rate': {
             # a flat distribution between 0 and 0.1
