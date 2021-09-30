@@ -10,7 +10,7 @@ import config
 
 pprint.pprint(config.sweep_config)
 
-sweep_id = wandb.sweep(config.sweep_config, project="sweeps-test2", entity='pebpung')
+sweep_id = wandb.sweep(config.sweep_config)
 
 def train():
     wandb.init(config=config.hyperparameter_defaults)

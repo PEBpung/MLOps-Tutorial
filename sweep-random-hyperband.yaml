@@ -1,8 +1,10 @@
 program: train.py
+project: sweeps-test3
+entity: pebpung
 method: random
 metric:
-  name: loss
   goal: minimize
+  name: loss
 parameters:
   optimizer:
     values: ['adam', 'sgd']
@@ -14,11 +16,6 @@ parameters:
     distribution: uniform
     min: 0
     max: 0.1
-  batch_size:
-    distribution: q_log_uniform
-    q: 1
-    min: math.log(32)
-    max: math.log(256)
 early_terminate:
   type: hyperband
   s: 2

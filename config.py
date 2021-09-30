@@ -17,6 +17,8 @@ hyperparameter_defaults  = {
 
 sweep_config = {
     'method': 'random',
+    'project': "sweeps-test3", 
+    'entity': 'pebpung',
     'metric' : {
         'name': 'loss',
         'goal': 'minimize'   
@@ -48,7 +50,7 @@ sweep_config = {
         's': 2,
         'eta': 3,
         'max_iter': 27,
-        }
+        },
     }
 
 train_transform = transforms.Compose(
