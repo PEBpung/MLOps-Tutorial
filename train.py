@@ -1,5 +1,4 @@
 import wandb
-import pprint
 
 from dataset import SweepDataset
 from model import ConvNet
@@ -7,8 +6,6 @@ from optimize import build_optimizer
 from utils import train_epoch
 
 import config
-
-pprint.pprint(config.sweep_config)
 
 sweep_id = wandb.sweep(config.sweep_config)
 
