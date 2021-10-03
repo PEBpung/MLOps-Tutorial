@@ -11,7 +11,7 @@ hyperparameter_defaults  = {
         'weight_decay': 0.0005,
         'learning_rate': 1e-3,
         'activation': 'relu',
-        'optimizer': 'nadam',
+        'optimizer': 'adam',
         'seed': 42
     }
 
