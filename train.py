@@ -1,17 +1,13 @@
-import wandb
-
 from dataset import SweepDataset
 from model import ConvNet
 from optimize import build_optimizer
 from utils import train_epoch
 
+import wandb
 import config
-
-sweep_id = wandb.sweep(config.sweep_config)
 
 def train():
     wandb.init(config=config.hyperparameter_defaults)
-
     w_config = wandb.config
 
     loader = SweepDataset(w_config.batch_size, config.train_transform)
@@ -25,5 +21,7 @@ def train():
         print(f"TRAIN: EPOCH {epoch + 1:04d} / {w_config.epochs:04d} | Epoch LOSS {avg_loss:.4f}")
         wandb.log({'Epoch': epoch, "loss": avg_loss, "epoch": epoch})     
 
-wandb.agent(sweep_id, train, count=2)
+sweep_id = wandb.sweep(config.sweep_config)
+wandb.agent(sweep_id, train, count=30)
+
 
