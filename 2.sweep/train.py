@@ -21,7 +21,7 @@ def train():
         print(f"TRAIN: EPOCH {epoch + 1:04d} / {w_config.epochs:04d} | Epoch LOSS {avg_loss:.4f}")
         wandb.log({'Epoch': epoch, "loss": avg_loss, "epoch": epoch})     
 
-sweep_id = wandb.sweep(config.sweep_config)
-wandb.agent(sweep_id, train, count=30)
+sweep_id = wandb.sweep(config.sweep_config, project="sweeps-bayes", entity='pebpung')
+wandb.agent(sweep_id, train, count=10)
 
 

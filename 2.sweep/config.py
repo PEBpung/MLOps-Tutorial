@@ -16,9 +16,8 @@ hyperparameter_defaults  = {
     }
 
 sweep_config = {
-    'method': 'random',
-    'project': "sweeps-test3", 
-    'entity': 'pebpung',
+    'name' : 'bayes-test',
+    'method': 'bayes',
     'metric' : {
         'name': 'loss',
         'goal': 'minimize'   
