@@ -1,6 +1,11 @@
 ## BentoML PyTorch MNIST Tutorial
 Here is a tutorial on how to use BentoML to package a PyTorch model trained on the MNIST dataset, using the example code provided at the [bentoml repo](https://github.com/bentoml/BentoML/tree/main/examples/pytorch_mnist)
 
+<br>
+
+For detailed explanations of the code, please click the following link.
+
+[https://pebpung.github.io/engineering/2022/12/24/BentoML.html](https://pebpung.github.io/engineering/2022/12/24/BentoML.html)
 
 ## Prerequisites
 
@@ -52,7 +57,7 @@ bentoml serve service:svc
 
 This will start the model server and listen for HTTP POST requests at the /predict endpoint. The input data should be provided in the request body, and the expected output format should be specified in the Content-Type header.
 
-<center><img src="../assets/bentoml_ui.png" alt="3-Figure1-1" style="zoom: 40%;" /></center>
+<center><img src="../assets/bentoml_ui.png" alt="3-Figure1-1" style="zoom: 30%;" /></center>
 
 ## Build Bentos
 To build a bento, first create a bentomlfile.yaml file, and then call build method to persist the bento to the bento store:
