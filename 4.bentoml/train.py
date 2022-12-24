@@ -45,6 +45,7 @@ def train(dataset, opt, device="cpu"):
 
     optimizer = torch.optim.Adam(model.parameters(), lr=opt.lr)
     loss_function = nn.CrossEntropyLoss()
+
     for epoch in range(opt.epochs):
         train_loss = train_epoch(model, optimizer, loss_function, train_loader, device)
         print(f"Train Epoch: {epoch} \tLoss: {train_loss:.3f}")
@@ -54,16 +55,16 @@ def train(dataset, opt, device="cpu"):
 if __name__ == "__main__":
     opt = Options()
     seed_everything(opt.seed)
-
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     train_set, test_set = get_dataset()
 
+    # train 진행
     trained_model = train(train_set, opt, device)
     acc = test_model(trained_model, test_set, device)
     print(f"Test Result ACC: {acc:.3f}")
 
-    # train result save
+    # train 결과 저장
     metadata = {"acc": acc}
     signatures = {"predict": {"batchable": True}}
 
