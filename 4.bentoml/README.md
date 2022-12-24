@@ -1,8 +1,8 @@
 ## BentoML PyTorch MNIST Tutorial
-Here is a tutorial on how to use BentoML to package a PyTorch model trained on the MNIST dataset, using the example code provided at the [bentoml repo]("https://github.com/bentoml/BentoML/tree/main/examples/pytorch_mnist")
+Here is a tutorial on how to use BentoML to package a PyTorch model trained on the MNIST dataset, using the example code provided at the [bentoml repo](https://github.com/bentoml/BentoML/tree/main/examples/pytorch_mnist)
 
 
-## **Prerequisites**
+## Prerequisites
 
 - Install the required dependencies by running the following command:
 
@@ -10,7 +10,7 @@ Here is a tutorial on how to use BentoML to package a PyTorch model trained on t
 pip install -r requirements.txt
 ```
 
-## **Training the model**
+## Training the model
 
 1. Clone the repository and navigate to the root directory:
 
@@ -41,7 +41,7 @@ Saved model: Model(tag="pytorch_mnist:gmkted4dgkuoyycf")
 
 This will create a BentoML package containing the trained model and the necessary functions for serving it.
 
-## **Serving the trained model**
+## Serving the trained model
 Take a look at the service.py file. This file contains code for serving the BentoML package as a REST API using FastAPI.
 
 Run the following command to start the model server:
@@ -53,3 +53,43 @@ bentoml serve service:svc
 This will start the model server and listen for HTTP POST requests at the /predict endpoint. The input data should be provided in the request body, and the expected output format should be specified in the Content-Type header.
 
 <center><img src="../assets/bentoml_ui.png" alt="3-Figure1-1" style="zoom: 40%;" /></center>
+
+## Build Bentos
+To build a bento, first create a bentomlfile.yaml file, and then call build method to persist the bento to the bento store:
+
+```bash
+bentoml build
+```
+<details>
+<summary>📌 View build Result</summary>
+
+```bash
+Building BentoML service "pytorch_mnist_demo:46blisedkgqesycf" from build context "/home/tesser/kimin/WandB-Tutorial/4.bentoml".
+Packing model "pytorch_mnist:gmkted4dgkuoyycf"
+Locking PyPI package versions.
+
+██████╗░███████╗███╗░░██╗████████╗░█████╗░███╗░░░███╗██╗░░░░░
+██╔══██╗██╔════╝████╗░██║╚══██╔══╝██╔══██╗████╗░████║██║░░░░░
+██████╦╝█████╗░░██╔██╗██║░░░██║░░░██║░░██║██╔████╔██║██║░░░░░
+██╔══██╗██╔══╝░░██║╚████║░░░██║░░░██║░░██║██║╚██╔╝██║██║░░░░░
+██████╦╝███████╗██║░╚███║░░░██║░░░╚█████╔╝██║░╚═╝░██║███████╗
+╚═════╝░╚══════╝╚═╝░░╚══╝░░░╚═╝░░░░╚════╝░╚═╝░░░░░╚═╝╚══════╝
+
+Successfully built Bento(tag="pytorch_mnist_demo:46blisedkgqesycf").
+```
+</details>
+
+## Containerize Bentos
+
+```bash
+bentoml containerize pytorch_mnist_demo:latest -t latest
+```
+
+This will create a Docker image named bentoml/pytorch_mnist_demo:latest, with all the required source code, models, and dependency packages bundled in the image.
+
+The containerized bento can then be easily distributed and deployed to any environment.
+
+```bash
+# Run the containerized service
+docker run -p 3000:3000 pytorch_mnist_demo:latest
+```
