@@ -31,11 +31,11 @@ python train.py
 
 ```bash
 Training using cpu.
-Train Epoch: 0 | Loss: 0.505
-Train Epoch: 1 | Loss: 0.225
-Train Epoch: 2 | Loss: 0.169
-Test Result:    ACC: 9.563
-Saved model: Model(tag="pytorch_mnist:s27yyyudgguoyycf")
+Train Epoch: 0  Loss: 0.505
+Train Epoch: 1  Loss: 0.225
+Train Epoch: 2  Loss: 0.169
+Test Result ACC: 0.956
+Saved model: Model(tag="pytorch_mnist:gmkted4dgkuoyycf")
 ```
 </details>
 
